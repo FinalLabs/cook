@@ -3,7 +3,7 @@ A simple language that is compiled on runtime!
 # Syntax
 The syntax is fairly simple, there are 9 keywords; 2 yet to be implemented.
 
-## Implemented:
+### Implemented
 `add`
 `sub`
 `mul`
@@ -12,13 +12,13 @@ The syntax is fairly simple, there are 9 keywords; 2 yet to be implemented.
 `var`
 `out`
 
-## Not Implemented:
+### Not Implemented
 `mov`
 `cin`
 
 A few notes, srings are immutable and numbers are the only thing really supported at this point in time; maybe in the future this will change.
 
-## Examples:
+# Examples
 
 ### Hi World
 ```

@@ -26,7 +26,6 @@ lexer::keyword lexer::get_keyword(std::string s)
 
 int lexer::find_part(std::vector<std::string> c, int i, std::string what)
 {
-	//
 	return c.at(i).find(what);
 }
 
@@ -38,4 +37,9 @@ std::string lexer::get_sub(std::vector<std::string> c, int i, int start, int end
 std::string lexer::erase(std::vector<std::string> c, int i, int start, int end)
 {
 	return c.at(i).erase(start, end);
+}
+
+std::string::reverse_iterator lexer::find_reverse(std::vector<std::string> c, int i)
+{
+	return c.at(i).rbegin();
 }

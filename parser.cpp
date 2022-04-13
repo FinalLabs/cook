@@ -4,7 +4,9 @@ void parser::create_variable(std::tuple<std::string, std::string> var) {
 	variable_list.emplace_back(var);
 }
 
-void parser::parse_code(std::vector<std::string> c)
+/* put a lot of this into syntax analysis, because that is half of the parser, then use the parser for opcode generation */
+
+void parser::parse_code(std::vector<std::string> c) 
 {
 	lexer lex;
 
@@ -22,9 +24,9 @@ void parser::parse_code(std::vector<std::string> c)
 			std::string::iterator end = std::remove(target.begin(), target.end(), ' ');
 			target.erase(end, target.end());
 
-			c.at(i).erase(0, by);
-			std::string::reverse_iterator v = c.at(i).rbegin();
-			std::string val = c.at(i).substr(3, *v);
+			this->erase(c, i, 0, by);
+			std::string::reverse_iterator v = this->find_reverse(c, i);
+			std::string val = this->get_sub(c, i, 3, *v);
 
 			c.at(i).erase(3, *v);
 
@@ -34,9 +36,9 @@ void parser::parse_code(std::vector<std::string> c)
 		}
 		case lex.sub_keyword:
 		{
-			c.at(i).erase(0, 4);
+			this->erase(c, i, 0, 4);
 
-			int to = c.at(i).find("by");
+			int to = this->find_part(c, i, "by");
 			std::string target = c.at(i).substr(0, to);
 
 			std::string::iterator end = std::remove(target.begin(), target.end(), ' ');

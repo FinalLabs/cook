@@ -35,5 +35,6 @@ public:
 	int find_part(std::vector<std::string> c, int i, std::string what);
 	std::string get_sub(std::vector<std::string> c, int i, int start, int end);
 	std::string erase(std::vector<std::string> c, int i, int start, int end);
+	std::string::reverse_iterator find_reverse(std::vector<std::string> c, int i);
 };
 

@@ -43,12 +43,12 @@ The output on this is simply -
 
 Looking at this, the language is fairly simple and easy to learn; I will leave a dictionary for keywords and what they mean below.
 
-`add` - Addition `add var by 2`
-`sub` - Subtraction `sub var by 2`
-`mul` - Multiplication `mul var by 2`
-`div` - Division `div var by 2`
-`mod` - Modulus `mod var by 2`
-`var` - Declare Variable `var ten = 10` or with strings `var hi_world = "hi world"`
-`out` - Just std::cout or "print" `out var_name`
-`mov` - Moving a variable into another variable, or assigning a new value to an existing variable (no syntax for this yet)
-`cin` - Just std::cin `cin var_name val` (not implemented)
+`add` - Addition `add var by 2` <br />
+`sub` - Subtraction `sub var by 2` <br />
+`mul` - Multiplication `mul var by 2` <br />
+`div` - Division `div var by 2` <br />
+`mod` - Modulus `mod var by 2` <br />
+`var` - Declare Variable `var ten = 10` or with strings `var hi_world = "hi world"` <br />
+`out` - Just std::cout or "print" `out var_name` <br />
+`mov` - Moving a variable into another variable, or assigning a new value to an existing variable (no syntax for this yet) <br />
+`cin` - Just std::cin `cin var_name val` (not implemented) <br />

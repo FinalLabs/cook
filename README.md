@@ -37,9 +37,7 @@ var sub_v = 20
 sub sub_v by 10
 out sub_v
 ```
-The output on this is simply -
-`30`
-`10`
+The output on this is simply `30` (newline) `10`
 
 Looking at this, the language is fairly simple and easy to learn; I will leave a dictionary for keywords and what they mean below.
 

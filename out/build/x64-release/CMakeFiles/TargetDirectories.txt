@@ -1,0 +1,5 @@
+C:/Users/Anthony/source/repos/kook/out/build/x64-release/CMakeFiles/edit_cache.dir
+C:/Users/Anthony/source/repos/kook/out/build/x64-release/CMakeFiles/rebuild_cache.dir
+C:/Users/Anthony/source/repos/kook/out/build/x64-release/kook/CMakeFiles/kook.dir
+C:/Users/Anthony/source/repos/kook/out/build/x64-release/kook/CMakeFiles/edit_cache.dir
+C:/Users/Anthony/source/repos/kook/out/build/x64-release/kook/CMakeFiles/rebuild_cache.dir

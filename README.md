@@ -50,3 +50,29 @@ Looking at this, the language is fairly simple and easy to learn; I will leave a
 `out` - Just std::cout or "print" `out var_name` <br />
 `mov` - Moving a variable into another variable, or assigning a new value to an existing variable (no syntax for this yet) <br />
 `cin` - Just std::cin `cin var_name val` (not implemented) <br />
+
+# Future Syntax
+
+There will be future syntax, most likely implemented in the future (obviously).
+
+# Examples
+
+### If statements
+
+```
+if var == var1 then
+*code here*
+end
+```
+
+Fairly simple, will add other operators as well most likely
+
+### While loops
+
+```
+while var == var2 then
+*code here*
+end
+```
+
+There will be more future syntax coming up, but this is not garunteed to be final syntax.

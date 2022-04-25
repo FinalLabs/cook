@@ -70,7 +70,7 @@ Fairly simple, will add other operators as well most likely
 ### While loops
 
 ```
-while var == var2 then
+while var == var1 then
 *code here*
 end
 ```

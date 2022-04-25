@@ -53,7 +53,7 @@ Looking at this, the language is fairly simple and easy to learn; I will leave a
 
 # Future Syntax
 
-There will be future syntax, most likely implemented in the future (obviously).
+There will be future syntax, possibly implemented further on (obviously).
 
 # Examples
 
@@ -74,5 +74,3 @@ while var == var2 then
 *code here*
 end
 ```
-
-There will be more future syntax coming up, but this is not garunteed to be final syntax.

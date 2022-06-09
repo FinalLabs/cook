@@ -1,4 +1,4 @@
-# cook
+# Cook
 A simple language that is compiled on runtime!
 # Syntax
 The syntax is fairly simple, there are 9 keywords; 2 yet to be implemented.

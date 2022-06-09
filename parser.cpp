@@ -1,120 +1,75 @@
 #include "parser.hpp"
 
-void parser::create_variable(std::tuple<std::string, std::string> var) {
-	variable_list.emplace_back(var);
-}
-
-/* put a lot of this into syntax analysis, because that is half of the parser, then use the parser for opcode generation */
-
 void parser::parse_code(std::vector<std::string> c) 
 {
 	lexer lex;
+	std::string val;
+	std::string target;
 
 	for (int i = 0; i < c.size(); ++i)
 	{
-		switch (lex.get_keyword(c.at(i).substr(0, 3)))
+		
+		auto add_instruction = [this](int op, std::string s1, std::string s2) -> void
 		{
-		case lex.add_keyword:
-		{
-			this->erase(c, i, 0, 4);
+			std::tuple<int, std::string, std::string> instruction_tuple(op, s1, s2);
+			this->instruction_list.emplace_back(instruction_tuple);
+		};
 
-			int by = this->find_part(c, i, "by");
-			std::string target = this->get_sub(c, i, 0, by); //target
+		auto analyze_math = [&c, &i, &val, &target]() -> void
+		{
+			c.at(i).erase(0, 4);
+
+			int to = c.at(i).find("by");
+			target = c.at(i).substr(0, to);
 
 			std::string::iterator end = std::remove(target.begin(), target.end(), ' ');
 			target.erase(end, target.end());
 
-			this->erase(c, i, 0, by);
-			std::string::reverse_iterator v = this->find_reverse(c, i);
-			std::string val = this->get_sub(c, i, 3, *v);
+			c.at(i).erase(0, to);
+			std::string::reverse_iterator v = c.at(i).rbegin();
+			val = c.at(i).substr(3, *v);
 
 			c.at(i).erase(3, *v);
+		};
 
-			std::tuple<int, std::string, std::string> instruction_tuple(opcode::op_add, target, val);
-			this->instruction_list.emplace_back(instruction_tuple);
+		switch (lex.get_keyword(this->get_sub(c, i, 0, 3)))
+		{
+		case lex.add_keyword:
+		{
+			analyze_math();
+
+			add_instruction(opcode::op_add, target, val);
 			break;
 		}
 		case lex.sub_keyword:
 		{
-			this->erase(c, i, 0, 4);
+			analyze_math();
 
-			int to = this->find_part(c, i, "by");
-			std::string target = c.at(i).substr(0, to);
-
-			std::string::iterator end = std::remove(target.begin(), target.end(), ' ');
-			target.erase(end, target.end());
-
-			c.at(i).erase(0, to);
-			std::string::reverse_iterator v = c.at(i).rbegin();
-			std::string val = c.at(i).substr(3, *v);
-
-			c.at(i).erase(3, *v);
-
-			std::tuple<int, std::string, std::string> instruction_tuple(opcode::op_sub, target, val);
-			this->instruction_list.emplace_back(instruction_tuple);
+			add_instruction(opcode::op_sub, target, val);
 			break;
 		}
 		case lex.mul_keyword:
 		{
-			c.at(i).erase(0, 4);
+			analyze_math();
 
-			int to = c.at(i).find("by");
-			std::string target = c.at(i).substr(0, to);
-
-			std::string::iterator end = std::remove(target.begin(), target.end(), ' ');
-			target.erase(end, target.end());
-
-			c.at(i).erase(0, to);
-			std::string::reverse_iterator v = c.at(i).rbegin();
-			std::string val = c.at(i).substr(3, *v);
-
-			c.at(i).erase(3, *v);
-
-			std::tuple<int, std::string, std::string> instruction_tuple(opcode::op_mul, target, val);
-			this->instruction_list.emplace_back(instruction_tuple);
+			add_instruction(opcode::op_mul, target, val);
 			break;
 		}
 		case lex.div_keyword:
 		{
-			c.at(i).erase(0, 4);
+			analyze_math();
 
-			int to = c.at(i).find("by");
-			std::string target = c.at(i).substr(0, to);
-
-			std::string::iterator end = std::remove(target.begin(), target.end(), ' ');
-			target.erase(end, target.end());
-
-			c.at(i).erase(0, to);
-			std::string::reverse_iterator v = c.at(i).rbegin();
-			std::string val = c.at(i).substr(3, *v);
-
-			c.at(i).erase(3, *v);
-
-			std::tuple<int, std::string, std::string> instruction_tuple(opcode::op_div, target, val);
-			this->instruction_list.emplace_back(instruction_tuple);
+			add_instruction(opcode::op_div, target, val);
 			break;
 		}
 		case lex.mod_keyword:
 		{
-			c.at(i).erase(0, 4);
+			analyze_math();
 
-			int to = c.at(i).find("by");
-			std::string target = c.at(i).substr(0, to);
-
-			std::string::iterator end = std::remove(target.begin(), target.end(), ' ');
-			target.erase(end, target.end());
-
-			c.at(i).erase(0, to);
-			std::string::reverse_iterator v = c.at(i).rbegin();
-			std::string val = c.at(i).substr(3, *v);
-
-			c.at(i).erase(3, *v);
-
-			std::tuple<int, std::string, std::string> instruction_tuple(opcode::op_mod, target, val);
-			this->instruction_list.emplace_back(instruction_tuple);
+			add_instruction(opcode::op_mod, target, val);
 			break;
 		}
-		case lex.mov_keyword:
+		case lex.mov_keyword: /* going to add sometime soon in the near future :) */
 		{
 
 		}
@@ -155,7 +110,7 @@ void parser::parse_code(std::vector<std::string> c)
 			this->instruction_list.emplace_back(instruction_tuple);
 			break;
 		}
-		case lex.cin_keyword:
+		case lex.cin_keyword: /* if i add this then variables will be able to be declared with no value :) */
 		{
 
 		}

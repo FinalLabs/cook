@@ -3,13 +3,9 @@
 int main()
 {
 	interpreter interpreter({
-		"var hi_world = \"hi world\"",
-		"out hi_world",
-
-		"var test = 30",
-		"mul test by 2",
-		"div test by 3",
-		"out test"
+		"var num_30 = 30",
+		"add num_30 by 3",
+		"out num_30"
 		});
 	
 	interpreter.load();

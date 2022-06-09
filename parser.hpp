@@ -5,7 +5,15 @@
 class parser : private lexer
 {
 private:
-	void create_variable(std::tuple<std::string, std::string> var);
+	void create_variable(std::tuple<std::string, std::string> var)
+	{
+		variable_list.emplace_back(var);
+	}
+
+	std::string get_sub(std::vector<std::string> c, int i, int start, int end)
+	{
+		return c.at(i).substr(start, end);
+	}
 protected:
 	std::vector< std::tuple<int, std::string, std::string> > instruction_list;
 	std::vector<std::tuple<std::string, std::string>> variable_list;
